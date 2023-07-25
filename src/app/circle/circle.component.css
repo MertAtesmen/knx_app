@@ -1,0 +1,8 @@
+.circle{
+    height: 100px;
+    width: 100px;
+    background-color: aqua;
+    border-radius: 50px;
+    text-align: center;
+    vertical-align: middle;
+}

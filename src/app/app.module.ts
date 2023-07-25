@@ -3,10 +3,14 @@ import { BrowserModule } from '@angular/platform-browser';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
+import { CircleComponent } from './circle/circle.component';
+import { GroupCardComponent } from './group-card/group-card.component';
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    CircleComponent,
+    GroupCardComponent
   ],
   imports: [
     BrowserModule,
