@@ -3,44 +3,37 @@ import { CircleComponent } from './circle/circle.component';
 import { XMLParser } from 'fast-xml-parser';
 import { GroupCardComponent } from './group-card/group-card.component';
 import { GroupAddress } from './group-address';
+import { MainComponent } from './main/main.component';
 
 @Component({
   selector: 'app-root',
   template:`
-    <button (click)="logToggle()">Click</button>
-    <ng-template [ngIf]="logedIn" [ngIfElse]="LoggedOut">
-      <div *ngFor="let address of list">
-        <app-group-card name={{address.Name}} address={{address.Address}} dpts={{address.DPTs}}/>
-      </div>   
-    </ng-template> 
-    <ng-template #LoggedOut>
-      <p>Please click the button</p>
-    </ng-template>
-    
- `,
+    <button (click)="changeOption(0);">0</button>
+    <button (click)="changeOption(1);">1</button>
+    <button (click)="changeOption(2);">2</button>
+    <app-main [option]="option" [groupAddresses]="groupAddresses"/>
+    `,
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
   title = 'angular_knx';
-  logedIn : Boolean = false;
-
-  logToggle():void{    
-    this.logedIn = !this.logedIn;
+  option:number = 0;
+  
+  changeOption(option:number):void{
+    this.option = option;
+    console.log("Option: "+option);
   }
-
-  list:Array<any>;
+  groupAddresses:Array<any>;
   constructor(){
 
     const options = {
       attributeNamePrefix : "",
-      //attrNodeName: false,
-      //textNodeName : "#text",
       ignoreAttributes : false,
       ignoreNameSpace: false,
     };
     const parser = new XMLParser(options);
     const obj = parser.parse(XML);
-    this.list = obj["GroupAddress-Export"]["GroupRange"]["GroupRange"][0]["GroupAddress"];
+    this.groupAddresses = obj["GroupAddress-Export"]["GroupRange"]["GroupRange"][0]["GroupAddress"];
   }
 }
 

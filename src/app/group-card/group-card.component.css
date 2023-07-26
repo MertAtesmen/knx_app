@@ -1,0 +1,26 @@
+.group-card-row{
+    display:grid;
+    border-color: black;
+    border-width: 2px;
+    border-radius: 30px;
+    border-style: solid;
+    width: 200px;
+    padding: 30px;
+}
+
+
+
+.group-card-name{
+    grid-row: 1;
+
+
+}
+
+
+.group-card-icon{
+    left: 0px;
+    width: 50px;
+    padding: 1px;
+    grid-row: 1;
+
+}
