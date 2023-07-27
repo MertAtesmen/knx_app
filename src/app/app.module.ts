@@ -9,6 +9,9 @@ import {MatIconModule} from '@angular/material/icon';
 import { MainComponent } from './main/main.component';
 import {MatDialogModule} from '@angular/material/dialog';
 import { DialogComponent } from './dialog/dialog.component';
+import {MatInputModule} from '@angular/material/input';
+import {MatFormFieldModule} from '@angular/material/form-field';
+import { FormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -19,6 +22,9 @@ import { DialogComponent } from './dialog/dialog.component';
     DialogComponent
   ],
   imports: [
+    FormsModule,
+    MatInputModule,
+    MatFormFieldModule,
     MatDialogModule,
     MatIconModule,
     BrowserModule,
