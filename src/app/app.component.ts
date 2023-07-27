@@ -7,6 +7,7 @@ import { MainComponent } from './main/main.component';
 @Component({
   selector: 'app-root',
   template:`
+    <button (click)="onClickTest()">On Click Test</button>
     <button (click)="changeOption(0);">0</button>
     <button (click)="changeOption(1);">1</button>
     <button (click)="changeOption(2);">2</button>
@@ -17,6 +18,11 @@ import { MainComponent } from './main/main.component';
 export class AppComponent {
   title = 'angular_knx';
   option:number = 0;
+
+   onClickTest() : void {
+    
+
+  }
   
   changeOption(option:number):void{
     this.option = option;

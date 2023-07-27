@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { Inject } from '@angular/core';
 import {MAT_DIALOG_DATA} from '@angular/material/dialog';
 
+
 @Component({
   selector: 'app-dialog',
   template: `
@@ -26,15 +27,10 @@ export class DialogComponent {
     if(this.inputString.length >9){
        this.inputString = ""
     }
-
   }
 
   submit(input:string) : void{
-
     console.log(this.data.name);
-    
-
-
   }
 
   constructor(

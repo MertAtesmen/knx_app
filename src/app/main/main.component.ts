@@ -1,23 +1,34 @@
 import { Component, Input } from '@angular/core';
-
+import { NgStyle } from '@angular/common';
 @Component({
   selector: 'app-main',
   template:`
-    <ng-template [ngIf]="option===0" class="groupAddressGrid">
-      <div *ngFor="let groupAddress of group0">
-        <app-group-card [name]="groupAddress.Name" [address]="groupAddress.Address" [dpts]="groupAddress.DPTs" />
+  <div class="groupAddressGrid">
+    <ng-template [ngIf]="option===0" >
+      <div *ngFor="let groupAddress of group0; let i = index" [ngStyle]="{'grid-column':i%4,'grid-row':a(i)}">
+         <app-group-card 
+          [name]="groupAddress.Name"
+          [address]="groupAddress.Address" 
+          [dpts]="groupAddress.DPTs" />
       </div>
     </ng-template>
-    <ng-template [ngIf]="option===1" class="groupAddressGrid">
-      <div *ngFor="let groupAddress of group1">
-       <app-group-card [name]="groupAddress.Name" [address]="groupAddress.Address" [dpts]="groupAddress.DPTs" /> 
+    <ng-template [ngIf]="option===1">
+      <div *ngFor="let groupAddress of group1; let i = index" [ngStyle]="{'grid-column':i%4,'grid-row':a(i)}">
+         <app-group-card 
+          [name]="groupAddress.Name"
+          [address]="groupAddress.Address" 
+          [dpts]="groupAddress.DPTs" />
       </div>
     </ng-template>
-    <ng-template [ngIf]="option===2" class="groupAddressGrid">
-      <div *ngFor="let groupAddress of group2"> 
-        <app-group-card [name]="groupAddress.Name" [address]="groupAddress.Address" [dpts]="groupAddress.DPTs"/>
+    <ng-template [ngIf]="option===2">
+      <div *ngFor="let groupAddress of group2; let i = index" [ngStyle]="{'grid-column':i%4,'grid-row':a(i)}">
+        <app-group-card 
+          [name]="groupAddress.Name"
+          [address]="groupAddress.Address" 
+          [dpts]="groupAddress.DPTs" />
       </div>
     </ng-template> 
+  </div>
   `,
   styleUrls: ['./main.component.css']
 })
@@ -29,6 +40,9 @@ export class MainComponent {
 
   group2:Array<any> = [];
 
+  a(index : number) : number{
+    return  Math.trunc(index/4);
+  }
 
   constructor(){
     console.log("The option is : " + this.option);

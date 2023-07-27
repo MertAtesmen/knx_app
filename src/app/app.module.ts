@@ -11,6 +11,7 @@ import { DialogComponent } from './dialog/dialog.component';
 import {MatInputModule} from '@angular/material/input';
 import {MatFormFieldModule} from '@angular/material/form-field';
 import { FormsModule } from '@angular/forms';
+import { NgStyle } from '@angular/common';
 
 @NgModule({
   declarations: [
@@ -20,6 +21,7 @@ import { FormsModule } from '@angular/forms';
     DialogComponent
   ],
   imports: [
+    NgStyle,
     FormsModule,
     MatInputModule,
     MatFormFieldModule,
