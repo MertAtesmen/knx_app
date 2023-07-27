@@ -9,7 +9,7 @@ import {MAT_DIALOG_DATA} from '@angular/material/dialog';
     <h1 mat-dialog-title> {{data.name}}</h1>
     <div mat-dialog-content> 
       <mat-icon>{{data.icon}} </mat-icon>
-      <button (click)="submit(inputString)">Submit</button>
+      <button (click)="submit(inputString)" matDialogClose>Submit</button>
     </div>
     <div matDialogActions>
       <button matDialogClose="s">Close</button>
@@ -26,10 +26,15 @@ export class DialogComponent {
     if(this.inputString.length >9){
        this.inputString = ""
     }
+
   }
 
   submit(input:string) : void{
+
     console.log(this.data.name);
+    
+
+
   }
 
   constructor(

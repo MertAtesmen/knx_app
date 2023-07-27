@@ -1,5 +1,4 @@
 import { Component } from '@angular/core';
-import { CircleComponent } from './circle/circle.component';
 import { XMLParser } from 'fast-xml-parser';
 import { GroupCardComponent } from './group-card/group-card.component';
 import { GroupAddress } from './group-address';

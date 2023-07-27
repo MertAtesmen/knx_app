@@ -1,6 +1,5 @@
 import { Component,Input, inject } from '@angular/core';
 import { MatDialog, MatDialogConfig } from '@angular/material/dialog';
-import { CircleComponent } from '../circle/circle.component';
 import { DialogComponent } from '../dialog/dialog.component';
 
 @Component({

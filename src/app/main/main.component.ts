@@ -1,23 +1,20 @@
 import { Component, Input } from '@angular/core';
-import { MatDialog, MatDialogConfig } from '@angular/material/dialog';
-import { CircleComponent } from '../circle/circle.component';
-import { DialogPosition } from '@angular/material/dialog';
 
 @Component({
   selector: 'app-main',
   template:`
-    <ng-template [ngIf]="option===0">
+    <ng-template [ngIf]="option===0" class="groupAddressGrid">
       <div *ngFor="let groupAddress of group0">
         <app-group-card [name]="groupAddress.Name" [address]="groupAddress.Address" [dpts]="groupAddress.DPTs" />
       </div>
     </ng-template>
-    <ng-template [ngIf]="option===1">
+    <ng-template [ngIf]="option===1" class="groupAddressGrid">
       <div *ngFor="let groupAddress of group1">
        <app-group-card [name]="groupAddress.Name" [address]="groupAddress.Address" [dpts]="groupAddress.DPTs" /> 
       </div>
     </ng-template>
-    <ng-template [ngIf]="option===2">
-      <div *ngFor="let groupAddress of group2">
+    <ng-template [ngIf]="option===2" class="groupAddressGrid">
+      <div *ngFor="let groupAddress of group2"> 
         <app-group-card [name]="groupAddress.Name" [address]="groupAddress.Address" [dpts]="groupAddress.DPTs"/>
       </div>
     </ng-template> 
@@ -33,7 +30,7 @@ export class MainComponent {
   group2:Array<any> = [];
 
 
-  constructor(public dialog:MatDialog){
+  constructor(){
     console.log("The option is : " + this.option);
   }
   ngOnInit(): void {

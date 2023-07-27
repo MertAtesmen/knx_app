@@ -3,7 +3,6 @@ import { BrowserModule } from '@angular/platform-browser';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { CircleComponent } from './circle/circle.component';
 import { GroupCardComponent } from './group-card/group-card.component';
 import {MatIconModule} from '@angular/material/icon';
 import { MainComponent } from './main/main.component';
@@ -16,7 +15,6 @@ import { FormsModule } from '@angular/forms';
 @NgModule({
   declarations: [
     AppComponent,
-    CircleComponent,
     GroupCardComponent,
     MainComponent,
     DialogComponent
