@@ -2,6 +2,7 @@ import { Component,Input, inject } from '@angular/core';
 import { MatDialog, MatDialogConfig } from '@angular/material/dialog';
 import { DialogComponent } from '../dialog/dialog.component';
 
+
 @Component({
   selector: 'app-group-card',
   template: `
@@ -45,6 +46,7 @@ export class GroupCardComponent {
       dpts : this.dpts,
       icon: this.icon
     };
+    
     config.position={
       top:"0px",
       left:"0px",

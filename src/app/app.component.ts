@@ -1,8 +1,8 @@
-import { Component } from '@angular/core';
+import { Component, Inject } from '@angular/core';
 import { XMLParser } from 'fast-xml-parser';
 import { GroupCardComponent } from './group-card/group-card.component';
-import { GroupAddress } from './group-address';
 import { MainComponent } from './main/main.component';
+import { HttpClient } from '@angular/common/http';
 
 @Component({
   selector: 'app-root',
@@ -19,9 +19,37 @@ export class AppComponent {
   title = 'angular_knx';
   option:number = 0;
 
-   onClickTest() : void {
-    
+  onClickTest() : void {
+    const options = {
+      attributeNamePrefix : "",
+      ignoreAttributes : false,
+      ignoreNameSpace: false,
+    };
+    const parser = new XMLParser(options);
 
+    this.httpClient.get('assets/datatypes.json', {responseType: 'text'})
+        .subscribe(data => 
+          {
+            const obj = JSON.parse(data);
+            console.log(obj);
+            console.log(obj[19].DatapointSubtypes.DatapointSubtype);
+
+            const dataSubTypes = obj[19].DatapointSubtypes.DatapointSubtype;
+
+            let size = 8;
+
+            let file : Array<string> = [];
+
+            dataSubTypes.forEach((dataSubType:any)=>
+            {
+              file.push(`type ${dataSubType.text} = ${dataSubType.Id} `);
+              file.push(`class ${ dataSubType.Id } {\n`);
+              file.push(`static size : number = ${size}`);
+              file.push(`static name : string = ${dataSubType.text}`)
+              
+            });
+            
+          });  
   }
   
   changeOption(option:number):void{
@@ -29,7 +57,7 @@ export class AppComponent {
     console.log("Option: "+option);
   }
   groupAddresses:Array<any>;
-  constructor(){
+  constructor(private httpClient: HttpClient){
 
     const options = {
       attributeNamePrefix : "",
@@ -41,6 +69,7 @@ export class AppComponent {
     this.groupAddresses = obj["GroupAddress-Export"]["GroupRange"]["GroupRange"][0]["GroupAddress"];
   }
 }
+
 
 const XML=`
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>

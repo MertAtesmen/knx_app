@@ -48,6 +48,11 @@ export class MainComponent {
     console.log("The option is : " + this.option);
   }
   ngOnInit(): void {
+
+    const set: Set<string> = new Set(this.groupAddresses.sort().map((val,index,a) => val.DPTs));
+
+    console.log(set.entries());
+    
     console.log("The array is:");
     console.log(this.groupAddresses)
     this.group0 = this.groupAddresses.filter((val,index,arr)=>index%3==0);

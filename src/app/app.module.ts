@@ -12,6 +12,8 @@ import {MatInputModule} from '@angular/material/input';
 import {MatFormFieldModule} from '@angular/material/form-field';
 import { FormsModule } from '@angular/forms';
 import { NgStyle } from '@angular/common';
+import { HttpClient } from '@angular/common/http';
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -21,6 +23,7 @@ import { NgStyle } from '@angular/common';
     DialogComponent
   ],
   imports: [
+    HttpClientModule,
     NgStyle,
     FormsModule,
     MatInputModule,
@@ -30,7 +33,7 @@ import { NgStyle } from '@angular/common';
     BrowserModule,
     AppRoutingModule
   ],
-  providers: [],
+  providers: [HttpClient],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
