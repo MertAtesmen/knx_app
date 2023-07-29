@@ -32,9 +32,9 @@ export class AppComponent {
           {
             const obj = JSON.parse(data);
             console.log(obj);
-            console.log(obj[19].DatapointSubtypes.DatapointSubtype);
+            console.log(obj[0].DatapointSubtypes.DatapointSubtype);
 
-            const dataSubTypes = obj[19].DatapointSubtypes.DatapointSubtype;
+            const dataSubTypes = obj[0].DatapointSubtypes.DatapointSubtype;
 
             let size = 8;
 
@@ -42,13 +42,32 @@ export class AppComponent {
 
             dataSubTypes.forEach((dataSubType:any)=>
             {
-              file.push(`type ${dataSubType.text} = ${dataSubType.Id} `);
-              file.push(`class ${ dataSubType.Id } {\n`);
-              file.push(`static size : number = ${size}`);
-              file.push(`static name : string = ${dataSubType.text}`)
-              
+
+              let bit = dataSubType.Format.Bit;
+
+
+              file.push(
+                `const ${ (dataSubType.Id as string).replaceAll("-","_") }: DPST =  {
+                  type: 'Enumeration',
+                  sizeInBit: 1,
+                  basicName: "${dataSubType["Name"]}",
+                  explicitName: "${dataSubType["Text"]}",
+                  enumeration:
+                    [
+                      "${bit.Cleared}",
+                      "${bit.Set}"
+                    ],
+                  minValue: null,
+                  maxValue: null,
+                  coefficient: null,
+                  unit: null,
+                }
+                
+                `);             
             });
-            
+          
+
+            console.log(file.join(""));
           });  
   }
   

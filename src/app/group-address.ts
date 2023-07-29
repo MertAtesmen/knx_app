@@ -126,6 +126,8 @@ export interface DPST{
 
     readonly enumeration: Array<string> | null,
 
+    // readonly bitList: Array<BitData> | null;
+
     readonly minValue: any | null,
 
     readonly maxValue: any | null,
@@ -135,6 +137,12 @@ export interface DPST{
     readonly unit: string | null,
 
 };
+
+export interface BitData{
+    cleared: string,
+    set: string,
+    name: string | null,
+}
 
 
 ////Examples
