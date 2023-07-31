@@ -3,10 +3,14 @@ import { XMLParser } from 'fast-xml-parser';
 import { GroupCardComponent } from './group-card/group-card.component';
 import { MainComponent } from './main/main.component';
 import { HttpClient } from '@angular/common/http';
+import {Dpst_1_1} from "./group-address";
+import { getText } from './utils';
 
 @Component({
   selector: 'app-root',
   template:`
+    <button (click)="a()">On Test</button>
+    <button (click)="onClickGetDpstsTexts()">On Click Type Test</button>
     <button (click)="onClickTest()">On Click Test</button>
     <button (click)="changeOption(0);">0</button>
     <button (click)="changeOption(1);">1</button>
@@ -18,6 +22,65 @@ import { HttpClient } from '@angular/common/http';
 export class AppComponent {
   title = 'angular_knx';
   option:number = 0;
+
+  a():void{
+    console.log(getText("Dpst-1-12"));
+  }
+
+  ngOnInit(): void {
+    this.httpClient.get('assets/datatypes.json', {responseType:'text'})
+    .subscribe(
+      (data)=>{
+        dataTypes = {};
+        dataTypes = JSON.parse(data);
+        console.log(dataTypes);
+      }
+    );
+  }
+
+
+  onClickGetDpstsTexts(): void{
+    const indexes = [
+      [1,1],
+      [1,2],
+      [1,3],
+      [1,8],
+      [1,100],
+      [5,1],
+      [5,10],
+      [9,1],
+      [9,7],
+      [18,1],
+      [20,102]
+    ]
+
+    
+    let textList = [];
+   
+    
+    for (let index = 0; index < indexes.length; index++) {
+      const val = indexes[index];
+
+      const data = dataTypes[val[0]-1]["DatapointSubtypes"]["DatapointSubtype"];
+
+      const a = "";
+
+      if(data.length === undefined){
+        
+        textList.push(data["Text"]);
+      }
+      else{
+        try{
+        textList.push(data.find((value:any,i:any,arr:any)=>(value["Id"] as string).startsWith(
+          `DPST-${val[0]}-${val[1]}`))["Text"]);
+        }catch(e){
+          console.log(`DPST-${val[0]}-${val[1]}`);
+        }
+      }
+    }
+   
+    console.log(textList);
+  }
 
   onClickTest() : void {
     const options = {
@@ -86,8 +149,12 @@ export class AppComponent {
     const parser = new XMLParser(options);
     const obj = parser.parse(XML);
     this.groupAddresses = obj["GroupAddress-Export"]["GroupRange"]["GroupRange"][0]["GroupAddress"];
+
+    console.log(this.groupAddresses.sort());
   }
 }
+
+export let dataTypes: any = null;
 
 
 const XML=`

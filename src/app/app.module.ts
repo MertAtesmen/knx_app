@@ -14,6 +14,19 @@ import { FormsModule } from '@angular/forms';
 import { NgStyle } from '@angular/common';
 import { HttpClient } from '@angular/common/http';
 import { HttpClientModule } from '@angular/common/http';
+import { heroUsers } from '@ng-icons/heroicons/outline';
+import { bootstrapCalendar, bootstrapArrowDownUp , bootstrapWind} from '@ng-icons/bootstrap-icons'
+
+
+import 
+{ 
+  mat10k ,matSettings , matLightbulb , matThermostat, matAcUnit,
+  matAlarm,matWhatshot
+} from '@ng-icons/material-icons/baseline'
+import { NgIconsModule } from '@ng-icons/core';
+
+
+
 
 @NgModule({
   declarations: [
@@ -23,6 +36,12 @@ import { HttpClientModule } from '@angular/common/http';
     DialogComponent
   ],
   imports: [
+    NgIconsModule.withIcons(
+      {heroUsers,mat10k,matSettings,matLightbulb , matThermostat,matAcUnit ,
+        matAlarm,matWhatshot, bootstrapArrowDownUp ,bootstrapCalendar,
+        bootstrapWind
+      }
+      ),
     HttpClientModule,
     NgStyle,
     FormsModule,

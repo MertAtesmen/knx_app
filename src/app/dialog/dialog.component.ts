@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { Inject } from '@angular/core';
 import {MAT_DIALOG_DATA} from '@angular/material/dialog';
+import { getText } from '../utils';
 
 
 @Component({
@@ -30,6 +31,7 @@ export class DialogComponent {
   }
 
   submit(input:string) : void{
+    console.log(getText(this.data.dpts));
     console.log(this.data.name);
   }
 
