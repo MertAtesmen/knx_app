@@ -10,7 +10,8 @@ import { getText } from '../utils';
   <div class="matDialogContainer">
     <h1 mat-dialog-title> {{data.name}}</h1>
     <div mat-dialog-content> 
-      <mat-icon>{{data.icon}} </mat-icon>
+      <ng-icon [name] = "data.icon"></ng-icon>
+      <div>{{ dpstText }}</div>
       <button (click)="submit(inputString)" matDialogClose>Submit</button>
     </div>
     <div matDialogActions>
@@ -23,6 +24,7 @@ import { getText } from '../utils';
 export class DialogComponent {
 
   inputString:string="";
+  dpstText:string = "";
 
   onKeyDown():void{
     if(this.inputString.length >9){
@@ -31,7 +33,6 @@ export class DialogComponent {
   }
 
   submit(input:string) : void{
-    console.log(getText(this.data.dpts));
     console.log(this.data.name);
   }
 
@@ -42,6 +43,8 @@ export class DialogComponent {
       dpts : string, 
       icon : string
     }
-  ) { }
+  ) {
+    this.dpstText = getText(this.data.dpts) ?? "";
+   }
 }
 
