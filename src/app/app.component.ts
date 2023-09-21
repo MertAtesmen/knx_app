@@ -15,6 +15,8 @@ import { getText } from './utils';
     <button (click)="changeOption(0);">0</button>
     <button (click)="changeOption(1);">1</button>
     <button (click)="changeOption(2);">2</button>
+    <button (click)="changeOption(3);">3</button>
+    
     <app-main [option]="option" [groupAddresses]="groupAddresses"/>
     `,
   styleUrls: ['./app.component.css']
@@ -150,12 +152,15 @@ export class AppComponent {
     const obj = parser.parse(XML);
     this.groupAddresses = obj["GroupAddress-Export"]["GroupRange"]["GroupRange"][0]["GroupAddress"];
 
-    console.log(this.groupAddresses.sort());
+    console.log(JSON.stringify(this.groupAddresses));
+
   }
 }
 
 export let dataTypes: any = null;
 
+
+// 6 7 8
 
 const XML=`
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>

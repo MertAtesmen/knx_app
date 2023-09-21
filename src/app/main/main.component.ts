@@ -28,6 +28,14 @@ import { NgStyle } from '@angular/common';
           [dpts]="groupAddress.DPTs" />
       </div>
     </ng-template> 
+    <ng-template [ngIf]="option===3">
+      <div *ngFor="let groupAddress of groupAddresses; let i = index" [ngStyle]="{'grid-column':(i%4)+1,'grid-row':a(i) + 1}">
+        <app-group-card 
+          [name]="groupAddress.Name"
+          [address]="groupAddress.Address" 
+          [dpts]="groupAddress.DPTs" />
+      </div>
+    </ng-template> 
   </div>
   `,
   styleUrls: ['./main.component.css']

@@ -40,7 +40,7 @@ export class GroupCardComponent {
       return;
     }
 
-    GroupCardComponent.lock = true;
+      GroupCardComponent.lock = true;
     
     const config = new MatDialogConfig();
     

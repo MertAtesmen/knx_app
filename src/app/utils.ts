@@ -13,7 +13,7 @@ export function getText(dpst: string): string | null {
 
   const index = parseInt(firstreg![0]) - 1;
 
-  const data = dataTypes[index]['DatapointSubtypes']['DatapointSubtype'];
+  const data = dataTypes[index]['DatapointSubtypes']['DatapointSusbtype'];
 
   if (data.length === undefined) {
     return data['Text'];

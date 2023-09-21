@@ -1,5 +1,9 @@
 import { dataTypes } from "./app.component";
 
+// Burada data type'ları anlataca classlar yaratmaya çalıştım fakat beceremedim
+// Eğer başarsaydım teoride her tülü data type'ı kapsayacak bir component yaratmak mümkün olacaktı.
+
+
 enum DPSTDataTypes{
     BitData,
     UnsignedValue,
